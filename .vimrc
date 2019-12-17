@@ -23,7 +23,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-fugitive'
 
-
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'vim-airline/vim-airline'
 " Initialize plugin system
 call plug#end()
 " Disable virtualenv in Pymode
@@ -55,9 +56,9 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 
 " Visual
-:set guifont=Menlo\ Regular:h14
 if has("gui_running")
   syntax on
+  set guifont=Menlo\ Regular:h14
   set hlsearch
   colorscheme evening
   set bs=2
