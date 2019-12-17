@@ -25,6 +25,7 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'vim-airline/vim-airline'
+Plug 'leafgarland/typescript-vim'
 " Initialize plugin system
 call plug#end()
 " Disable virtualenv in Pymode
@@ -41,6 +42,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 
+map <C-p> :Files<CR>
 map <C-n> :NERDTreeToggle<CR>
 " --column: Show column number
 " --line-number: Show line number
@@ -54,13 +56,14 @@ map <C-n> :NERDTreeToggle<CR>
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 
+set relativenumber
 
 " Visual
+colorscheme molokai
 if has("gui_running")
   syntax on
   set guifont=Menlo\ Regular:h14
   set hlsearch
-  colorscheme evening
   set bs=2
   set ai
   set ruler
