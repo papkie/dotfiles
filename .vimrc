@@ -56,6 +56,9 @@ nmap <leader>rn <Plug>(coc-rename)
 
 map <C-p> :Files<CR>
 map <C-b> :NERDTreeToggle<CR>
+inoremap <silent><expr> <c-space> coc#refresh()
+
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
