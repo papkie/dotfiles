@@ -26,6 +26,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'alvan/vim-closetag'
 
 " Initialize plugin system
 call plug#end()
@@ -53,10 +54,21 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
+noremap <D-1> gt
+noremap <D-2> 2gt
+noremap <D-3> 3gt
+noremap <D-4> 4gt
+noremap <D-5> 5gt
+noremap <D-6> 6gt
+noremap <D-7> 7gt
+noremap <D-8> 8gt
+noremap <D-9> 9gt
 
 map <C-p> :Files<CR>
 map <C-b> :NERDTreeToggle<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
+
 
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 " --column: Show column number
