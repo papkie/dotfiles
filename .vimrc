@@ -54,16 +54,23 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
-noremap <D-1> gt
-noremap <D-2> 2gt
-noremap <D-3> 3gt
-noremap <D-4> 4gt
-noremap <D-5> 5gt
-noremap <D-6> 6gt
-noremap <D-7> 7gt
-noremap <D-8> 8gt
-noremap <D-9> 9gt
-
+noremap <C-1> gt
+noremap <C-2> 2gt
+noremap <C-3> 3gt
+noremap <C-4> 4gt
+noremap <C-5> 5gt
+noremap <C-6> 6gt
+noremap <C-7> 7gt
+noremap <C-8> 8gt
+noremap <C-9> 9gt
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+map <C-t> :tabnew <CR>
 map <C-p> :Files<CR>
 map <C-b> :NERDTreeToggle<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -85,7 +92,7 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 set relativenumber
 set ts=4 sw=4
-
+set mouse=a
 " Visual
 colorscheme molokai
 if has("gui_running")
