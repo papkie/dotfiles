@@ -71,7 +71,7 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 map <C-t> :tabnew <CR>
-map <C-p> :Files<CR>
+map <C-p> :GFiles<CR>
 map <C-b> :NERDTreeToggle<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
