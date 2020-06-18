@@ -1,8 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'maxmellon/vim-jsx-pretty'
@@ -14,9 +12,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'vim-airline/vim-airline'
-Plug 'SirVer/ultisnips'
+Plug 'vim-airline/vim-airline' " status bar
+
+" ES2015 code snippets (Optional)
+" Plug 'honza/vim-snippets'
 Plug 'mlaursen/vim-react-snippets'
+Plug 'mlaursen/rmd-vim-snippets'
 
 "  --------------
 "  Highlighting, syntax
@@ -24,9 +25,9 @@ Plug 'mlaursen/vim-react-snippets'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'alvan/vim-closetag'
+
+Plug 'tomtom/tcomment_vim' " comment
 
 " Initialize plugin system
 call plug#end()
@@ -35,7 +36,6 @@ let g:pymode_virtualenv = 0
 " Disable pymode init and lint because of #897
 let g:pymode_init = 0
 let g:pymode_lint = 0
-
 "  --------------
 "  Autoformat
 "  --------------
@@ -63,6 +63,7 @@ noremap <C-6> 6gt
 noremap <C-7> 7gt
 noremap <C-8> 8gt
 noremap <C-9> 9gt
+" complete brackets:
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ( ()<left>
@@ -71,10 +72,16 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 map <C-t> :tabnew <CR>
-map <C-p> :GFiles<CR>
+map <C-p> :Files<CR>
 map <C-b> :NERDTreeToggle<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
+
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
+
+" " Automatically save the session when leaving Vim
+" autocmd! VimLeave * mksession
+" " Automatically load the session when entering vim
+" autocmd! VimEnter * source ~/Session.vim
 
 
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
@@ -89,9 +96,8 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-
+set expandtab ts=4 sw=4 ai
 set relativenumber
-set ts=4 sw=4
 set mouse=a
 " Visual
 colorscheme molokai
@@ -103,3 +109,20 @@ if has("gui_running")
   set ai
   set ruler
 endif
+
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
