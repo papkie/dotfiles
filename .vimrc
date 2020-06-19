@@ -49,6 +49,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 autocmd VimEnter * NERDTree
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -56,6 +58,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 noremap <C-1> gt
 noremap <C-2> 2gt
 noremap <C-3> 3gt
@@ -77,7 +83,7 @@ map <C-t> :tabnew <CR>
 map <C-p> :Files<CR>
 map <C-b> :NERDTreeToggle<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
-
+set backspace=indent,eol,start
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
 
 " " Automatically save the session when leaving Vim
