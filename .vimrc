@@ -29,6 +29,8 @@ Plug 'alvan/vim-closetag'
 
 Plug 'tomtom/tcomment_vim' " comment
 
+Plug 'airblade/vim-gitgutter'
+
 " Initialize plugin system
 call plug#end()
 " Disable virtualenv in Pymode
@@ -83,6 +85,11 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
 " " Automatically load the session when entering vim
 " autocmd! VimEnter * source ~/Session.vim
 
+" for command mode
+nnoremap <S-Tab> <<
+" for insert mode
+inoremap <S-Tab> <C-d>
+
 
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 " --column: Show column number
@@ -126,3 +133,4 @@ endfunction
 
 " Highlight currently open buffer in NERDTree
 autocmd BufEnter * call SyncTree()
+autocmd BufWinEnter * NERDTreeMirror
