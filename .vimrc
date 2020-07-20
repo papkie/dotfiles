@@ -1,5 +1,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -26,6 +28,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-surround'
 
 Plug 'tomtom/tcomment_vim' " comment
 
@@ -72,13 +75,13 @@ noremap <C-7> 7gt
 noremap <C-8> 8gt
 noremap <C-9> 9gt
 " complete brackets:
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+" inoremap " ""<left>
+" inoremap ' ''<left>
+" inoremap ( ()<left>
+" inoremap [ []<left>
+" inoremap { {}<left>
+" inoremap {<CR> {<CR>}<ESC>O
+" inoremap {;<CR> {<CR>};<ESC>O
 map <C-t> :tabnew <CR>
 map <C-p> :Files<CR>
 map <C-b> :NERDTreeToggle<CR>
