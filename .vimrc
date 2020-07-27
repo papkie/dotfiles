@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
+Plug 'ap/vim-buftabline'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -50,6 +50,11 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Buffer as tabs
+set hidden
+" nnoremap <leader> n :bnext<CR>
+" nnoremap <leader> p :bprev<CR>
 
 autocmd VimEnter * NERDTree
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
