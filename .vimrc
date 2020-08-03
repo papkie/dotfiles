@@ -28,12 +28,12 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'alvan/vim-closetag'
-Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'tomtom/tcomment_vim' " comment
 
 Plug 'airblade/vim-gitgutter'
-
+Plug 'nightsense/carbonized'
 " Initialize plugin system
 call plug#end()
 " Disable virtualenv in Pymode
@@ -56,7 +56,7 @@ set hidden
 " nnoremap <leader> n :bnext<CR>
 " nnoremap <leader> p :bprev<CR>
 
-autocmd VimEnter * NERDTree
+"" autocmd VimEnter * NERDTree
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
@@ -93,6 +93,7 @@ map <C-b> :NERDTreeToggle<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
 set backspace=indent,eol,start
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
+
 
 " " Automatically save the session when leaving Vim
 " autocmd! VimLeave * mksession
@@ -146,5 +147,5 @@ function! SyncTree()
 endfunction
 
 " Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
-autocmd BufWinEnter * NERDTreeMirror
+" "autocmd BufEnter * call SyncTree()
+" "autocmd BufWinEnter * NERDTreeMirrorOpen
