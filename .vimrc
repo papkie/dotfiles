@@ -1,4 +1,10 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
+Plug 'thaerkh/vim-workspace'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ap/vim-buftabline'
@@ -125,7 +131,7 @@ set mouse=a
 colorscheme molokai
 if has("gui_running")
   syntax on
-  set guifont=Menlo\ Regular:h14
+  set guifont=Menlo\ Regular:h16
   set hlsearch
   set bs=2
   set ai
