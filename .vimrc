@@ -63,6 +63,7 @@ set hidden
 " nnoremap <leader> p :bprev<CR>
 
 "" autocmd VimEnter * NERDTree
+" COC
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
@@ -76,6 +77,19 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" COC END
+
+
 noremap <C-1> gt
 noremap <C-2> 2gt
 noremap <C-3> 3gt
