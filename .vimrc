@@ -8,12 +8,7 @@ Plug 'thaerkh/vim-workspace'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ap/vim-buftabline'
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'sheerun/vim-polyglot'
-
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -32,14 +27,20 @@ Plug 'mlaursen/rmd-vim-snippets'
 "  --------------
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'pangloss/vim-javascript'
 Plug 'alvan/vim-closetag'
 Plug 'jiangmiao/auto-pairs'
-
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'sheerun/vim-polyglot'
 Plug 'tomtom/tcomment_vim' " comment
 
 Plug 'airblade/vim-gitgutter'
 Plug 'nightsense/carbonized'
+" Themes
+"
+Plug 'crusoexia/vim-monokai'
+"
 " Initialize plugin system
 call plug#end()
 " Disable virtualenv in Pymode
@@ -108,8 +109,8 @@ noremap <C-9> 9gt
 " inoremap {<CR> {<CR>}<ESC>O
 " inoremap {;<CR> {<CR>};<ESC>O
 map <C-t> :tabnew <CR>
-map <C-p> :Files<CR>
-map <C-b> :NERDTreeToggle<CR>
+map <C-p> :GFiles<CR>
+map <C-S-e> :NERDTreeToggle<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
 set backspace=indent,eol,start
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
@@ -143,6 +144,7 @@ set relativenumber
 set mouse=a
 " Visual
 colorscheme molokai
+let g:rehash256 = 1
 if has("gui_running")
   syntax on
   set guifont=Menlo\ Regular:h16

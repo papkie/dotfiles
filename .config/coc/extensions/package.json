@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "coc-eslint": ">=1.4.1",
-    "coc-json": ">=1.3.2",
-    "coc-tabnine": ">=1.2.3",
-    "coc-tsserver": ">=1.6.6"
+    "coc-eslint": ">=1.4.5",
+    "coc-json": ">=1.3.3",
+    "coc-tabnine": ">=1.3.3",
+    "coc-tsserver": ">=1.6.7"
   }
 }
