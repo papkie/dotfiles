@@ -103,3 +103,5 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/usr/local/bin:$PATH"
 export TERM=xterm-256color   
 source $HOME/.sh.ext
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
